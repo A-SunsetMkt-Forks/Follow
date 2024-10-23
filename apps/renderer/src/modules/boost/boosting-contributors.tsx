@@ -1,7 +1,6 @@
 import { m } from "framer-motion"
 
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar"
-import { softSpringPreset } from "~/components/ui/constants/spring"
 import { replaceImgUrlIfNeed } from "~/lib/img-proxy"
 import { useFeedBoostersQuery } from "~/modules/boost/query"
 
@@ -18,7 +17,7 @@ export const BoostingContributors = ({ feedId }: { feedId: string }) => {
       initial={{ opacity: 0, height: 0 }}
       animate={{ opacity: 1, height: "auto" }}
       exit={{ opacity: 0, height: 0 }}
-      transition={softSpringPreset}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
     >
       <h2 className="mb-4 text-2xl font-bold">Boosting Contributors</h2>
       <ul className="space-y-4">
