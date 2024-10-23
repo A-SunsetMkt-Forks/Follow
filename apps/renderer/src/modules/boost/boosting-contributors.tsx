@@ -2,14 +2,13 @@ import { m } from "framer-motion"
 
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar"
 import { softSpringPreset } from "~/components/ui/constants/spring"
-import { useAuthQuery } from "~/hooks/common"
 import { replaceImgUrlIfNeed } from "~/lib/img-proxy"
-import { boosts } from "~/queries/boosts"
+import { useFeedBoostersQuery } from "~/modules/boost/query"
 
 import { usePresentUserProfileModal } from "../profile/hooks"
 
 export const BoostingContributors = ({ feedId }: { feedId: string }) => {
-  const { data: boosters, isLoading } = useAuthQuery(boosts.getBoosters({ feedId }))
+  const { data: boosters, isLoading } = useFeedBoostersQuery(feedId)
   const presentUserProfile = usePresentUserProfileModal("drawer")
   if (isLoading || !boosters || boosters.length === 0) return
 
